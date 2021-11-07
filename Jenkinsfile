@@ -1,6 +1,10 @@
 pipeline {
    agent any
 
+   tools {
+      maven 'MAVEN'
+   }
+
    environment {
      // You must set the following environment variables
      // ORGANIZATION_NAME
