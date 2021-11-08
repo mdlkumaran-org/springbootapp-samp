@@ -42,10 +42,20 @@ pipeline {
          }
       }
 
-      stage('Deploy to Cluster') {
-          steps {
-                    sh 'envsubst < ${WORKSPACE}/deploy.yaml | kubectl apply -f -'
-          }
-      }
+      // stage('Deploy to Cluster') {
+      //     steps {
+      //               sh 'envsubst < ${WORKSPACE}/deploy.yaml | kubectl apply -f -'
+      //     }
+      // }
+
+      stage ('K8S Deploy') {
+       
+                kubernetesDeploy(
+                    configs: 'deploy.yaml',
+                    kubeconfigId: 'K8S',
+                    enableConfigSubstitution: true
+                    )               
+        }
+
    }
 }
