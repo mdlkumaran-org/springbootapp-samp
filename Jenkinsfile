@@ -36,7 +36,7 @@ pipeline {
 
       stage('DockerHub Push') {
          steps {
-           withDockerRegistry(credentialsId: 'dockerhub_id', toolName: 'DOCKER') {
+           withDockerRegistry(credentialsId: 'dockerhub_id', url: '') {
                sh 'docker push ${REPOSITORY_TAG}'
             }
          }
