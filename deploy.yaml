@@ -19,10 +19,6 @@ spec:
         - name: SPRING_PROFILES_ACTIVE
           value: production-microservice
         imagePullPolicy: IfNotPresent
-        readinessProbe:
-          httpGet:
-            path: /healthz
-            port: 8080
 ---
 apiVersion: v1
 kind: Service
