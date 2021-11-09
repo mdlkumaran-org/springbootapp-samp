@@ -46,7 +46,7 @@ pipeline {
 
       stage('Helm Template') {
          steps {
-           sh 'helm template ${WORKSPACE}/helm-chart > deploy.yaml'
+           sh 'helm template ${WORKSPACE}/helm-chart > ${WORKSPACE}/deploy.yaml'
          }
       }
 
