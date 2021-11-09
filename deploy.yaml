@@ -6,7 +6,7 @@ spec:
   selector:
     matchLabels:
       app: springbootapp
-  replicas: 1
+  replicas: {{ .Values.springbootapp.numberOfBackendReplicas}}
   template: # template for the pods
     metadata:
       labels:

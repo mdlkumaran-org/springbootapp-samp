@@ -1,0 +1,2 @@
+springbootapp:
+  numberOfBackendReplicas: 1
