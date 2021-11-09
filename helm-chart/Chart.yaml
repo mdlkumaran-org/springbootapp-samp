@@ -1,6 +1,6 @@
 apiVersion: v2
-name: helm-chart-sample
-description: A Helm chart for Kubernetes
+name: springbootapp-chart
+description: A Helm chart for a basic springbootapp
 
 # A chart can be either an 'application' or a 'library' chart.
 #
