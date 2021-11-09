@@ -36,29 +36,29 @@ pipeline {
          }
       }
 
-      // stage('DockerHub Push') {
-      //    steps {
-      //      withDockerRegistry(credentialsId: 'dockerhub_id', url: '') {
-      //          sh 'docker push ${REPOSITORY_TAG}'
-      //       }
-      //    }
-      // }
-
-      stage('Deploy to Cluster') {
-          steps {
-                    sh 'envsubst < ${WORKSPACE}/deploy.yaml | kubectl apply -f -'
-          }
+      stage('DockerHub Push') {
+         steps {
+           withDockerRegistry(credentialsId: 'dockerhub_id', url: '') {
+               sh 'docker push ${REPOSITORY_TAG}'
+            }
+         }
       }
 
-      // stage ('K8S Deploy') {
-      //  steps {
-      //       kubernetesDeploy(
-      //          configs: 'deploy.yaml',
-      //          kubeconfigId: 'K8s',
-      //          enableConfigSubstitution: true
-      //       )       
-                   
-      //    }
+      // stage('Deploy to Cluster') {
+      //     steps {
+      //               sh 'envsubst < ${WORKSPACE}/deploy.yaml | kubectl apply -f -'
+      //     }
       // }
+
+      stage ('K8S Deploy') {
+       steps {
+            kubernetesDeploy(
+               configs: 'deploy.yaml',
+               kubeconfigId: 'K8s',
+               enableConfigSubstitution: true
+            )       
+                   
+         }
+      }
    }
 }
