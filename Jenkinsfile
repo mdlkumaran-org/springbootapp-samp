@@ -52,11 +52,12 @@ pipeline {
 
       stage ('K8S Deploy') {
        steps {
-            kubernetesDeploy(
-               configs: 'deploy.yaml',
-               kubeconfigId: 'K8s',
-               enableConfigSubstitution: true
-            )              
+            // kubernetesDeploy(
+            //    configs: 'deploy.yaml',
+            //    kubeconfigId: 'K8s',
+            //    enableConfigSubstitution: true
+            // )       
+            sh 'envsubst < ${WORKSPACE}/deploy.yaml | kubectl apply -f -'       
          }
       }
    }
